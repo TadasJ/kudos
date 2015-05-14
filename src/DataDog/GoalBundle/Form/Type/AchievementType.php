@@ -4,6 +4,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use DataDog\GoalBundle\Entity\Goal;
+use DataDog\UserBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 /**
  * Class GoalType
@@ -35,7 +37,7 @@ class AchievementType extends AbstractType
             'multiple' => true,
         ]);
 
-        $builder->add('users', 'entity', [
+        $builder->add('user', 'entity', [
             'class' => 'UserBundle:User',
             'choices' => $this->fetchEmployeeChoices(),
             'empty_value' => 'Please Select',

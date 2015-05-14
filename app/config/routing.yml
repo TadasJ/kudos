@@ -5,3 +5,6 @@ user:
 goal:
     resource: "@GoalBundle/Controller"
     type: annotation
+
+logout:
+    path:   /logout

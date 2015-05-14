@@ -4,7 +4,6 @@ namespace DataDog\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use DataDog\GoalBundle\Entity\Achievement;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -124,16 +123,16 @@ class User implements UserInterface, \Serializable
     private $teams;
 
     /**
-     * @var Achievement[] $achievements
+     * @var \DataDog\GoalBundle\Entity\Achievement[] $achievements
      *
-     * @ORM\OneToMany(targetEntity="Achievement", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\DataDog\GoalBundle\Entity\Achievement", mappedBy="user")
      */
     private $achievements;
 
     /**
-     * @var Achievement[] $managedAchievements
+     * @var \DataDog\GoalBundle\Entity\Achievement[] $managedAchievements
      *
-     * @ORM\OneToMany(targetEntity="Achievement", mappedBy="manager")
+     * @ORM\OneToMany(targetEntity="\DataDog\GoalBundle\Entity\Achievement", mappedBy="manager")
      */
     private $managedAchievements;
 
@@ -195,7 +194,7 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        return [$this->getRole()];
+        return [$this->getRole()->getRole()];
     }
 
     /**
@@ -437,7 +436,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @return Achievement[]
+     * @return \DataDog\GoalBundle\Entity\Achievement[]
      */
     public function getAchievements()
     {
@@ -445,7 +444,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param Achievement[] $achievements
+     * @param \DataDog\GoalBundle\Entity\Achievement[] $achievements
      */
     public function setAchievements($achievements)
     {
@@ -457,7 +456,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @return Achievement[]
+     * @return \DataDog\GoalBundle\Entity\Achievement[]
      */
     public function getManagedAchievements()
     {
@@ -465,7 +464,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param Achievement[] $managedAchievements
+     * @param \DataDog\GoalBundle\Entity\Achievement[] $managedAchievements
      */
     public function setManagedAchievements($managedAchievements)
     {

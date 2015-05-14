@@ -43,8 +43,7 @@ class AchievementController extends Controller
             //$user->setLastName($form->getData()->getLastName());
             //$user->setTotalPoints($form->getData()->getTotalPoints());
             //$user->setIsActive($form->getData()->getIsActive());
-
-            $achievement->setManager($achievement->getGoal()->getManager());
+            $achievement->setManager($this->getUser());
             $achievement->setTitle($achievement->getGoal()->getTitle());
             $achievement->setPoints($achievement->getGoal()->getPointsReward());
 

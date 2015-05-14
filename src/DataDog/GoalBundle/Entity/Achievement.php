@@ -80,18 +80,18 @@ class Achievement
     private $goal;
 
     /**
-     * @var \DataDog\UserBundle\User $user
+     * @var \DataDog\UserBundle\Entity\User $user
      *
-     * @ORM\ManyToOne(targetEntity="\DataDog\UserBundle\User")
+     * @ORM\ManyToOne(targetEntity="\DataDog\UserBundle\Entity\User")
      * @Assert\NotBlank(message="Please select user.")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @var \DataDog\UserBundle\User $manager
+     * @var \DataDog\UserBundle\Entity\User $manager
      *
-     * @ORM\ManyToOne(targetEntity="\DataDog\UserBundle\User")
+     * @ORM\ManyToOne(targetEntity="\DataDog\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
      */
     private $manager;
@@ -213,11 +213,17 @@ class Achievement
      */
     public function setGoal($goal)
     {
-        $this->goal = $goal;
+        if(is_a($goal, 'Doctrine\Common\Collections\ArrayCollection')){
+            $goal = $goal[0];
+        }
+        if(is_a($goal, 'DataDog\GoalBundle\Entity\Goal')) {
+            $this->goal = $goal;
+        }
+        return false;
     }
 
     /**
-     * @return \DataDog\UserBundle\User
+     * @return \DataDog\UserBundle\Entity\User
      */
     public function getUser()
     {
@@ -225,15 +231,21 @@ class Achievement
     }
 
     /**
-     * @param \DataDog\UserBundle\User $user
+     * @param \DataDog\UserBundle\Entity\User $user
      */
     public function setUser($user)
     {
-        $this->user = $user;
+        if(is_a($user, 'Doctrine\Common\Collections\ArrayCollection')){
+            $user = $user[0];
+        }
+        if(is_a($user, 'DataDog\UserBundle\Entity\User')) {
+            $this->user = $user;
+        }
+        return false;
     }
 
     /**
-     * @return \DataDog\UserBundle\User
+     * @return \DataDog\UserBundle\Entity\User
      */
     public function getManager()
     {
@@ -241,11 +253,18 @@ class Achievement
     }
 
     /**
-     * @param \DataDog\UserBundle\User $manager
+     * @param \DataDog\UserBundle\Entity\User $manager
      */
     public function setManager($manager)
     {
-        $this->manager = $manager;
+        if(is_a($manager, 'Doctrine\Common\Collections\ArrayCollection')){
+            $manager = $manager[0];
+        }
+        if(is_a($manager, 'DataDog\UserBundle\Entity\User')) {
+            $this->manager = $manager;
+            $this->manager_id = $manager->getId();
+        }
+        return false;
     }
 
 }

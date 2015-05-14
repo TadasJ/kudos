@@ -7,9 +7,9 @@ class UserRoleRepository extends EntityRepository
 {
 
     const ENTITY_NAME = 'UserBundle:UserRole';
-    const ROLE_ADMIN = 'admin';
-    const ROLE_MANAGER = 'manager';
-    const ROLE_EMPLOYEE = 'employee';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_MANAGER = 'ROLE_MANAGER';
+    const ROLE_EMPLOYEE = 'ROLE_EMPLOYEE';
 
     public function findById($id){
         return $this->getEntityManager()->getRepository(self::ENTITY_NAME)->findOneById($id);
