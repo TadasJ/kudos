@@ -1,0 +1,26 @@
+
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Total Members</th>
+            <th>Total Kudos</th>
+            <th>Manager</th>
+            <th>Actions</th>
+        </tr>
+        {% if teams is empty %}
+            <td colspan="4" style="text-align: center">No teams found.</td>
+        {% endif %}
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.membersCount }}</td>
+                <td>{{ team.kudosCount }}</td>
+                <td>{{ team.manager.__toString }}</td>
+                <td><a href="/team/view/{{ team.id }}">View</a>
+                {% if is_granted('ROLE_MANAGER') %}
+                    <a href="/team/edit/{{ team.id }}">Edit</a>
+                {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>

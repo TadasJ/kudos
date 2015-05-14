@@ -1,0 +1,31 @@
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>Employee</th>
+            <th>Goal</th>
+            <th>Kudos Reward</th>
+            {% if is_granted('ROLE_MANAGER') %}
+                <th>Created</th>
+                <th>Manager</th>
+            {% endif %}
+        </tr>
+        {% if achievements is empty %}
+            {% if is_granted('ROLE_MANAGER') %}
+                <td colspan="6" style="text-align: center">No achievements found.</td>
+            {% else %}
+                <td colspan="3" style="text-align: center">No achievements found.</td>
+            {% endif %}
+        {% endif %}
+        {% for achievement in achievements %}
+            <tr>
+                <td>{{ achievement.user.__toString }}</td>
+                <td>{{ achievement.goal.title }}</td>
+                <td>{{ achievement.goal.pointsReward }}</td>
+                {% if is_granted('ROLE_MANAGER') %}
+                    <td>{{ achievement.createAt | date }}</td>
+                    <td>{{ achievement.manager.__toString }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>

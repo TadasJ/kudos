@@ -1,0 +1,35 @@
+    <table class="table table-striped">
+        <tr>
+            <th>Goal</th>
+            <th>Kudos Reward</th>
+            <th>Times Achieved</th>
+            {% if is_granted('ROLE_MANAGER') %}
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            {% endif %}
+        </tr>
+        {% if goals is empty %}
+            {% if is_granted('ROLE_MANAGER') %}
+                <td colspan="5" style="text-align: center">No achievements found.</td>
+            {% else %}
+                <td colspan="2" style="text-align: center">No achievements found.</td>
+            {% endif %}
+        {% endif %}
+        {% for goal in goals %}
+            {% if goal.isActive == false %}
+                <tr style="background-color: rosybrown">
+            {% else %}
+                <tr>
+            {% endif %}
+                <td>{{ goal.title }}</td>
+                <td>{{ goal.pointsReward }}</td>
+                <td>{{ goal.achieveCount }}</td>
+                {% if is_granted('ROLE_MANAGER') %}
+                    <td>{{ goal.createAt | date }}</td>
+                    <td>{{ goal.updateAt | date }}</td>
+                    <td><a href="/goal/edit/{{ goal.id }}">Edit</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>

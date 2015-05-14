@@ -313,6 +313,14 @@ class User implements UserInterface, \Serializable
         $this->total_points = $total_points;
     }
 
+    public function addPoints($points){
+        $this->total_points += $points;
+    }
+
+    public function getAchievementCount(){
+        return count($this->achievements);
+    }
+
     /**
      * @return int
      */

@@ -201,4 +201,8 @@ class Goal
         $this->achievements[] = $achievement;
     }
 
+    public function achieveCount(){
+        return count($this->achievements);
+    }
+
 }

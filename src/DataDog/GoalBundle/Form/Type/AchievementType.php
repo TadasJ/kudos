@@ -32,19 +32,19 @@ class AchievementType extends AbstractType
         $builder->add('goal', 'entity', [
             'class' => 'GoalBundle:Goal',
             'choices' => $this->fetchGoalChoices(),
-            'label' => 'Goals',
+            'empty_value' => 'Please Select',
+            'label' => 'Goal',
             'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
-            'multiple' => true,
         ]);
 
         $builder->add('user', 'entity', [
             'class' => 'UserBundle:User',
             'choices' => $this->fetchEmployeeChoices(),
-            'label' => 'Goals',
+            'empty_value' => 'Please Select',
+            'label' => 'User',
             'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
-            'multiple' => true,
         ]);
         $builder->add('confirm', 'submit', [
             'attr' => ['class' => 'btn btn-primary']
@@ -61,7 +61,7 @@ class AchievementType extends AbstractType
 
     private function fetchGoalChoices()
     {
-        $goals = $this->em->getRepository('GoalBundle:Goal')->findAll();
+        $goals = $this->em->getRepository('GoalBundle:Goal')->findAllActive();
         return $goals;
     }
 

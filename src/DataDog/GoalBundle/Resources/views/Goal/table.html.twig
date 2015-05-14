@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% trans %}DataDog Goals{% endtrans %}{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading separator">
+                <div class="panel-title">Goal list
+                </div>
+            </div>
+            <div class="panel-body">
+                {{ include('GoalBundle:Goal:_list.html.twig') }}
+                <br>
+                {% if is_granted('ROLE_MANAGER') %}
+                    <a href="/goal/create" class="btn btn-primary">Add new goal</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

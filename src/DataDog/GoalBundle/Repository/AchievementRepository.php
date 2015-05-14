@@ -8,5 +8,4 @@ class AchievementRepository extends EntityRepository
 {
     const ENTITY_NAME = 'GoalBundle:Achievement';
 
-
 }

@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% trans %}DataDog Users{% endtrans %}{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading separator">
+                <div class="panel-title">User list
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Kudos</th>
+                        <th>Teams</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th>Role</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th>Logged in</th>
+                        {% endif %}
+                        {% if is_granted('ROLE_MANAGER') %}
+                            <th>Actions</th>
+                        {% endif %}
+                    </tr>
+                    {% if users is empty %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td colspan="10" style="text-align: center">No users found.</td>
+                        {% elseif is_granted('ROLE_MANAGER') %}
+                            <td colspan="6" style="text-align: center">No users found.</td>
+                        {% else %}
+                            <td colspan="5" style="text-align: center">No users found.</td>
+                        {% endif %}
+                    {% endif %}
+                    {% for user in users %}
+                        {% if user.isActive == false %}
+                            <tr style="background-color: rosybrown">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.totalPoints }}</td>
+                        <td>
+                            {% for team in user.teams %}
+                                {{ team.name }}
+                                <br>
+                            {% endfor %}
+                        </td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>{{ user.getRole.getTitle }}</td>
+                            <td>{{ user.createAt | date }}</td>
+                            <td>{{ user.updateAt | date }}</td>
+                            <td>{{ user.loginAt | date }}</td>
+                        {% endif %}
+                        {% if is_granted('ROLE_MANAGER') %}
+                            <td><a href="/user/view/{{ user.id }}">View</a>
+                            {% if is_granted('ROLE_MANAGER') %}
+                                <a href="/user/edit/{{ user.id }}">Edit</a>
+                            {% endif %}
+                            </td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="/user/create" class="btn btn-primary">Add new user</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

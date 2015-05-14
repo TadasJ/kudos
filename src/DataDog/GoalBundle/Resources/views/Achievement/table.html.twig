@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% trans %}DataDog Achievements{% endtrans %}{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading separator">
+                <div class="panel-title">Achievement list
+                </div>
+            </div>
+            <div class="panel-body">
+                {{ include('GoalBundle:Achievement:_list.html.twig') }}
+                <br>
+                {% if is_granted('ROLE_MANAGER') %}
+                    <a href="/achievement/create" class="btn btn-primary">Mark achievement</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

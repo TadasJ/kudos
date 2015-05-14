@@ -187,4 +187,16 @@ class Team
         return $this->getName();
     }
 
+    public function getMembersCount(){
+        return count($this->users);
+    }
+
+    public function getKudosCount(){
+        $kudos = 0;
+        foreach($this->users as $user){
+            $kudos += $user->getTotalPoints();
+        }
+        return $kudos;
+    }
+
 }

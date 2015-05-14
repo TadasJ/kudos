@@ -15,14 +15,31 @@ use DateTime;
 /**
  * Goal controller.
  *
- * @Route("/goal")
+ * @Route("/")
  */
 class GoalController extends Controller
 {
     /**
+     * Displays list of all goals
+     * @Route("/goal", name = "goal_index")
+     */
+    public function indexAction(){
+        $em = $this->getDoctrine()->getManager();
+        if($this->getUser()->getRole()->getRole() === 'ROLE_EMPLOYEE'){
+            $goals = $em->getRepository('GoalBundle:Goal')->findAllActive();
+        }else{
+            $goals = $em->getRepository('GoalBundle:Goal')->findAll();
+        }
+
+        return $this->render('GoalBundle:Goal:table.html.twig', [
+            'goals' => $goals,
+        ]);
+    }
+
+    /**
      * Responsible for creating new Goal entries
      *
-     * @Route("/create", name = "goal_create")
+     * @Route("/goal/create", name = "goal_create")
      * @param Request $request
      * @Template("GoalBundle:Goal:create.html.twig")
      */
@@ -45,6 +62,7 @@ class GoalController extends Controller
             $em->persist($goal);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'Goal '.$goal->getTitle().' successfully created.');
+            return $this->redirectToRoute('goal_index');
         }
 
         return $this->render('GoalBundle:Goal:create.html.twig', [
@@ -56,7 +74,7 @@ class GoalController extends Controller
     /**
      * Responsible for editing Goal entries
      *
-     * @Route("/edit/{id}", name = "goal_edit")
+     * @Route("/goal/edit/{id}", name = "goal_edit")
      * @param Request $request
      * @Template("GoalBundle:Goal:edit.html.twig")
      */
@@ -87,6 +105,7 @@ class GoalController extends Controller
                 $em->persist($goal);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', 'Goal ' . $goal->getTitle() . ' successfully updated.');
+                return $this->redirectToRoute('goal_index');
             }
         }
 

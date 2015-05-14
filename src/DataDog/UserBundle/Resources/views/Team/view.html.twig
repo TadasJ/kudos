@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% trans %}DataDog Team{% endtrans %}{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading separator">
+                <div class="panel-title">{{ team.name }} managed by {{ team.manager.firstName }} {{ team.manager.lastName }}
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>User</th>
+                        <th>Kudos</th>
+                        <th>Achievements</th>
+                        {% if is_granted('ROLE_MANAGER') %}
+                            <th>Actions</th>
+                        {% endif %}
+                    </tr>
+                    {% if team.users is empty %}
+                        {% if is_granted('ROLE_MANAGER') %}
+                            <td colspan="4" style="text-align: center">No team members found.</td>
+                        {% else %}
+                            <td colspan="3" style="text-align: center">No team members found.</td>
+                        {% endif %}
+                    {% endif %}
+                    {% for user in team.users %}
+                        {% if user.isActive == false %}
+                            <tr style="background-color: rosybrown">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                            <td>{{ user.__toString }}</td>
+                            <td>{{ user.totalPoints }}</td>
+                            <td>{{ user.achievementCount }}</td>
+                            {% if is_granted('ROLE_MANAGER') %}
+                                <td><a href="/user/view/{{ user.id }}">View</a>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a href="/user/edit/{{ user.id }}">Edit</a>
+                                {% endif %}
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="/user/create" class="btn btn-primary">Add new user</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

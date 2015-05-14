@@ -10,7 +10,13 @@ class GoalRepository extends EntityRepository
 
     public function findAllActive(){
         return $this->getEntityManager()
-            ->createQuery('SELECT e FROM '.self::ENTITY_NAME.' e WHERE e.is_active = 1')
+            ->createQuery('SELECT e FROM '.self::ENTITY_NAME.' e WHERE e.is_active = 1 ORDER BY e.points_reward DESC')
+            ->getResult();
+    }
+
+    public function findAll(){
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM '.self::ENTITY_NAME.' e ORDER BY e.is_active DESC, e.points_reward DESC')
             ->getResult();
     }
 }

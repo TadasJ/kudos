@@ -15,14 +15,68 @@ use DateTime;
 /**
  * Team controller.
  *
- * @Route("/team")
+ * @Route("/")
  */
 class TeamController extends Controller
 {
+
+    /**
+     * Displays information of a single team
+     * @Route("/team/view/{id}", name = "team_view")
+     */
+    public function viewAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $team = $em->getRepository('UserBundle:Team')->find($id);
+
+        if(!$team){
+            throw $this->createNotFoundException('Team entity with ID: '.$id.' does not exist.');
+        }
+
+        if($this->getUser()->getRole()->getRole() === 'ROLE_EMPLOYEE') {
+            $found = false;
+            foreach ($team->getUsers() as $user) {
+                if ($user === $this->getUser()) {
+                    $found = true;
+                    break;
+                }
+            }
+            if(!$found) {
+                throw $this->createAccessDeniedException('You do not have permission to view this team.');
+            }
+        }
+
+        return $this->render('UserBundle:Team:view.html.twig', [
+            'team' => $team,
+        ]);
+    }
+
+    /**
+     * Displays list of teams, individual for each user type.
+     * @Route("/team", name = "team_index")
+     */
+    public function indexAction(){
+        $user = $this->getUser();
+
+        if($user->getRole()->getRole() === 'ROLE_EMPLOYEE'){
+            $teams = $user->getTeams();
+        }else if($user->getRole()->getRole() === 'ROLE_MANAGER'){
+            $teams = $user->getManagedTeams();
+        }else if($user->getRole()->getRole() === 'ROLE_ADMIN'){
+            $em = $this->getDoctrine()->getManager();
+            $teams = $em->getRepository('UserBundle:Team')->findAll();
+        }else{
+            $teams = null;
+        }
+
+        return $this->render('UserBundle:Team:table.html.twig', [
+            'teams' => $teams,
+        ]);
+    }
+
     /**
      * Responsible for creating new Team entries
      *
-     * @Route("/create", name = "team_create")
+     * @Route("/team/create", name = "team_create")
      * @param Request $request
      * @Template("UserBundle:Team:create.html.twig")
      */
@@ -56,7 +110,7 @@ class TeamController extends Controller
     /**
      * Responsible for editing Tean entries
      *
-     * @Route("/edit/{id}", name = "team_edit")
+     * @Route("/team/edit/{id}", name = "team_edit")
      * @param Request $request
      * @Template("UserBundle:Team:edit.html.twig")
      */

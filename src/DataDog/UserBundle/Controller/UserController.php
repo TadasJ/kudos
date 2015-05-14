@@ -33,13 +33,69 @@ class UserController extends Controller
      */
     public function indexAction()
     {
+        return $this->redirectToRoute('user_view', ['id' => $this->getUser()->getId()]);
+    }
+
+    /**
+     * Displays information of a single user
+     * @Route("/user/view/{id}", name = "user_view")
+     */
+    public function viewAction($id){
         $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('UserBundle:User')->find($id);
 
-        $roles = $em->getRepository('UserBundle:UserRole')->findAll();
+        if(!$user){
+            throw $this->createNotFoundException('User entity with ID: '.$id.' does not exist.');
+        }
 
-        return array(
-            'roles' => $roles,
-        );
+        if($this->getUser()->getRole()->getRole() === 'ROLE_MANAGER'){
+            //TODO
+            /*if($user->manager !== $this->getUser()){
+                throw $this->createAccessDeniedException('You can only view users you manage.');
+            }*/
+            $goals = $em->getRepository('GoalBundle:Goal')->findAll();
+            $teams = $user->getManagedTeams();
+
+        }
+
+        if($this->getUser()->getRole()->getRole() === 'ROLE_EMPLOYEE'){
+            $goals = $em->getRepository('GoalBundle:Goal')->findAllActive();
+            $teams = $user->getTeams();
+        }
+
+        if($this->getUser()->getRole()->getRole() === 'ROLE_ADMIN'){
+            $goals = $em->getRepository('GoalBundle:Goal')->findAll();
+            $teams = $em->getRepository('UserBundle:Team')->findAll();
+        }
+
+        return $this->render('UserBundle:User:view.html.twig', [
+            'user' => $user,
+            'teams' => $teams,
+            'goals' => $goals
+        ]);
+    }
+
+    /**
+     * Displays list of users that can be managed by current user.
+     * @Route("/user", name = "user_list")
+     */
+    public function listAction(){
+        $user = $this->getUser();
+
+        if($user->getRole()->getRole() === 'ROLE_EMPLOYEE'){
+            return $this->redirectToRoute('home');
+        }else if($user->getRole()->getRole() === 'ROLE_MANAGER'){
+            $users = $user->getManagedUsers();
+        }else if($user->getRole()->getRole() === 'ROLE_ADMIN'){
+            $em = $this->getDoctrine()->getManager();
+            $users = $em->getRepository('UserBundle:User')->findAll();
+        }else{
+            $users = null;
+        }
+
+        return $this->render('UserBundle:User:list.html.twig', [
+            'users' => $users,
+        ]);
     }
 
 

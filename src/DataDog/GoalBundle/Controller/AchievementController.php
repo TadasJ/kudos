@@ -17,14 +17,27 @@ use DateTime;
 /**
  * Achievement controller.
  *
- * @Route("/achievement")
+ * @Route("/")
  */
 class AchievementController extends Controller
 {
     /**
+     * Displays list of all achievements
+     * @Route("/achievement", name = "achievement_index")
+     */
+    public function indexAction(){
+        $em = $this->getDoctrine()->getManager();
+        $achievements = $em->getRepository('GoalBundle:Achievement')->findAll();
+
+        return $this->render('GoalBundle:Achievement:table.html.twig', [
+            'achievements' => $achievements,
+        ]);
+    }
+
+    /**
      * Responsible for creating new Achievement entries
      *
-     * @Route("/create", name = "achievement_create")
+     * @Route("/achievement/create", name = "achievement_create")
      * @param Request $request
      * @Template("GoalBundle:Achievement:create.html.twig")
      */
@@ -46,10 +59,14 @@ class AchievementController extends Controller
             $achievement->setManager($this->getUser());
             $achievement->setTitle($achievement->getGoal()->getTitle());
             $achievement->setPoints($achievement->getGoal()->getPointsReward());
+            $user = $achievement->getUser();
+            $user->addPoints($achievement->getGoal()->getPointsReward());
 
             $em->persist($achievement);
+            $em->persist($user);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'Achievement successfully created.');
+            return $this->redirectToRoute('achievement_index');
         }
 
         return $this->render('GoalBundle:Achievement:create.html.twig', [
