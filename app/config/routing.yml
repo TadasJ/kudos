@@ -1,0 +1,7 @@
+user:
+    resource: "@UserBundle/Controller"
+    type: annotation
+
+goal:
+    resource: "@GoalBundle/Controller"
+    type: annotation

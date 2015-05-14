@@ -1,0 +1,36 @@
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+
+<div class="form-group">
+    <div class="row">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+        {% if form_errors(form.name) %}
+            {{ form_errors(form.name) }}
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {{ form_label(form.manager) }}
+        {{ form_widget(form.manager) }}
+        {% if form_errors(form.manager) %}
+            {{ form_errors(form.manager) }}
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {{ form_label(form.users) }}
+        {{ form_widget(form.users) }}
+        {% if form_errors(form.users) %}
+            {{ form_errors(form.users) }}
+        {% endif %}
+    </div>
+</div>
+
+<div class="form-actions">
+    <div class="row">
+        {{ form_widget(form.confirm) }}
+    </div>
+</div>
+
+{{ form_end(form) }}
