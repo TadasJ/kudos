@@ -1,29 +1,31 @@
 {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
 
-
-<div class="form-group">
-    <div class="row">
-        {{ form_label(form.goal) }}
-        {{ form_widget(form.goal) }}
-        {% if form_errors(form.goal) %}
-            {{ form_errors(form.goal) }}
-        {% endif %}
+    <div class="form-group">
+        <div class="row">
+            {{ form_label(form.goal) }}
+            {{ form_widget(form.goal) }}
+            {% if form_errors(form.goal) %}
+                {{ form_errors(form.goal) }}
+            {% endif %}
+        </div>
     </div>
 
-    <div class="row">
-        {{ form_label(form.user) }}
-        {{ form_widget(form.user) }}
-        {% if form_errors(form.user) %}
-            {{ form_errors(form.user) }}
-        {% endif %}
+    <div class="form-group">
+        <div class="row">
+            {{ form_label(form.user) }}
+            {{ form_widget(form.user) }}
+            {% if form_errors(form.user) %}
+                {{ form_errors(form.user) }}
+            {% endif %}
+        </div>
     </div>
 
-</div>
-
-<div class="form-actions">
-    <div class="row">
-        {{ form_widget(form.confirm) }}
     </div>
-</div>
+
+    <div class="form-actions">
+        <div class="row">
+            {{ form_widget(form.confirm) }}
+        </div>
+    </div>
 
 {{ form_end(form) }}

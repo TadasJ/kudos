@@ -1,8 +1,23 @@
-<div class="sidebar">
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    {% endif %}
-</div>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+        <div class="row col-md-12" style="border-bottom: solid; border-bottom-width: 2px; border-color: #006dcc; background-color:#428bca;">
+            <h3 class="col-lg-offset-1 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="color: white; text-shadow: 1px 1px 1px #666;">DataDog Kudos Board
+                <small></small>
+            </h3>
+        </div>
+
+        <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2">
+            <nav class="nav-sidebar">
+                <ul class="nav">
+                    <li class="active"><a href="/home">Home</a></li>
+                    <li><a href="/goal">Goals</a></li>
+                    <li><a href="/user">Users</a></li>
+                    <li><a href="/achievement">Achievements</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="/logout"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+{% endif %}

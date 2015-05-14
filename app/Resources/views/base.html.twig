@@ -3,12 +3,44 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}DataDog Kudos Board{% endblock %}</title>
+        {% stylesheets
+            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' filter='cssrewrite'
+            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css' filter='cssrewrite'
+            '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' filter='cssrewrite'
+            'css/custom.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {{ include('::sidebar.html.twig') }}
-        {% block body %}{% endblock %}
+        <div class="page-container">
+            <div class="row">
+                {{ include('::sidebar.html.twig') }}
+                <div class="container col-md-10" style="margin-top: 2%; float:left;">
+
+                    {% block body %}{% endblock %}
+
+                </div>
+            </div>
+        </div>
+
+        {% javascripts
+            'https://code.jquery.com/jquery-2.1.4.min.js'
+            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
         {% block javascripts %}{% endblock %}
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('[data-toggle=offcanvas]').click(function() {
+                    $('.row-offcanvas').toggleClass('active');
+                });
+            });
+        </script>
+
     </body>
 </html>

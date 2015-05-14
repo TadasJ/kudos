@@ -29,6 +29,9 @@ class GoalType extends AbstractType
     {
         $builder->add('title', 'textarea', [
             'required' => false,
+            'label' => 'Nyhow',
+            'label_attr' => ['class' => 'labelHi'],
+            'attr' => ['class' => 'form-control', 'placeholder' => 'sup son']
         ]);
         $builder->add('points_reward', 'text', [
             'required' => false,
