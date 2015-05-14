@@ -18,11 +18,15 @@ class LoginType extends AbstractType
     {
         $builder->add('username', 'text', [
             'required' => false,
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Username'],
         ]);
         $builder->add('plainPassword', 'password', [
             'required' => false,
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Password'],
         ]);
-        $builder->add('login', 'submit');
+        $builder->add('login', 'submit', [
+            'attr' => ['class' => 'btn btn-primary']
+        ]);
     }
     /**
      * @return string

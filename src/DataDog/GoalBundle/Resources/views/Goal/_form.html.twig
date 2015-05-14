@@ -1,35 +1,51 @@
 {{ form_start(form, {attr: {novalidate: 'novalidate', class: 'form-inline'}}) }}
 
 
-<div class="form-group">
-    <div class="row">
-        {{ form_label(form.title) }}
-        {{ form_widget(form.title) }}
-        {% if form_errors(form.title) %}
-            {{ form_errors(form.title) }}
-        {% endif %}
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.title) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.title) }}
+            {% if form_errors(form.title) %}
+                {{ form_errors(form.title) }}
+            {% endif %}
+        </div>
     </div>
-
-    <div class="row">
-        {{ form_label(form.points_reward) }}
-        {{ form_widget(form.points_reward) }}
-        {% if form_errors(form.points_reward) %}
-            {{ form_errors(form.points_reward) }}
-        {% endif %}
+</div>
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.points_reward) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.points_reward) }}
+            {% if form_errors(form.points_reward) %}
+                {{ form_errors(form.points_reward) }}
+            {% endif %}
+        </div>
     </div>
-
-    <div class="row">
-        {{ form_label(form.is_active) }}
-        {{ form_widget(form.is_active) }}
-        {% if form_errors(form.is_active) %}
-            {{ form_errors(form.is_active) }}
-        {% endif %}
+</div>
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.is_active) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.is_active) }}
+            {% if form_errors(form.is_active) %}
+                {{ form_errors(form.is_active) }}
+            {% endif %}
+        </div>
     </div>
 </div>
 
-<div class="form-actions">
-    <div class="row">
-        {{ form_widget(form.confirm) }}
+<div class="row">
+    <div class="form-actions">
+        <div class="col-md-offset-5">
+            {{ form_widget(form.confirm) }}
+        </div>
     </div>
 </div>
 

@@ -46,7 +46,7 @@ class UserController extends Controller
     /**
      *
      * @Route("/login", name="login")
-     * @route("/", name="login2")
+     * @Route("/", name="login2")
      * @Template("UserBundle:User:login.html.twig")
      */
     public function loginAction(Request $request){
@@ -138,6 +138,8 @@ class UserController extends Controller
 
         if(!$user){
             throw $this->createNotFoundException('User entity with ID: '.$id.' does not exist.');
+        }else if($user->getRole()->getRole() === 'ROLE_ADMIN'){
+            return $this->redirectToRoute('logout');
         }
 
         $form = $this->createForm(new UserType($em), $user);

@@ -1,31 +1,39 @@
-{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+{{ form_start(form, {attr: {novalidate: 'novalidate', class: 'form-inline'}}) }}
 
-    <div class="form-group">
-        <div class="row">
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
             {{ form_label(form.goal) }}
+        </div>
+        <div class="col-md-9">
             {{ form_widget(form.goal) }}
             {% if form_errors(form.goal) %}
                 {{ form_errors(form.goal) }}
             {% endif %}
         </div>
     </div>
+</div>
 
-    <div class="form-group">
-        <div class="row">
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
             {{ form_label(form.user) }}
+        </div>
+        <div class="col-md-9">
             {{ form_widget(form.user) }}
             {% if form_errors(form.user) %}
                 {{ form_errors(form.user) }}
             {% endif %}
         </div>
     </div>
+</div>
 
-    </div>
-
+<div class="row">
     <div class="form-actions">
-        <div class="row">
+        <div class="col-md-offset-5">
             {{ form_widget(form.confirm) }}
         </div>
     </div>
+</div>
 
 {{ form_end(form) }}

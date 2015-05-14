@@ -1,65 +1,113 @@
-{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+{{ form_start(form, {attr: {novalidate: 'novalidate', class: 'form-inline'}}) }}
 
 
-<div class="form-group">
-    <div class="row">
-        {{ form_label(form.username) }}
-        {{ form_widget(form.username) }}
-        {% if form_errors(form.username) %}
-            {{ form_errors(form.username) }}
-        {% endif %}
-    </div>
-
-    <div class="row">
-        {{ form_label(form.password) }}
-        {{ form_widget(form.password) }}
-        {% if form_errors(form.password) %}
-            {{ form_errors(form.password) }}
-        {% endif %}
-    </div>
-
-    <div class="row">
-        {{ form_label(form.first_name) }}
-        {{ form_widget(form.first_name) }}
-    </div>
-
-    <div class="row">
-        {{ form_label(form.last_name) }}
-        {{ form_widget(form.last_name) }}
-    </div>
-
-    <div class="row">
-        {{ form_label(form.role) }}
-        {{ form_widget(form.role) }}
-        {% if form_errors(form.role) %}
-                {{ form_errors(form.role) }}
-        {% endif %}
-    </div>
-
-    <div class="row">
-        {{ form_label(form.total_points) }}
-        {{ form_widget(form.total_points) }}
-    </div>
-
-    <div class="row">
-        {{ form_label(form.teams) }}
-        {{ form_widget(form.teams) }}
-        {% if form_errors(form.teams) %}
-            {{ form_errors(form.teams) }}
-        {% endif %}
-    </div>
-
-    <div class="row">
-        {%   if form.is_active is defined %}
-            {{ form_label(form.is_active) }}
-            {{ form_widget(form.is_active) }}
-        {% endif %}
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.username) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.username) }}
+            {% if form_errors(form.username) %}
+                {{ form_errors(form.username) }}
+            {% endif %}
+        </div>
     </div>
 </div>
 
-<div class="form-actions">
-    <div class="row">
-        {{ form_widget(form.confirm) }}
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.password) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.password) }}
+            {% if form_errors(form.password) %}
+                {{ form_errors(form.password) }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.first_name) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.first_name) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.last_name) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.last_name) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.role) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.role) }}
+            {% if form_errors(form.role) %}
+                    {{ form_errors(form.role) }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.total_points) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.total_points) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.teams) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.teams) }}
+            {% if form_errors(form.teams) %}
+                {{ form_errors(form.teams) }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{%   if form.is_active is defined %}
+<div class="row">
+    <div class="form-block">
+        <div class="col-md-3">
+            {{ form_label(form.is_active) }}
+        </div>
+        <div class="col-md-9">
+            {{ form_widget(form.is_active) }}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="row">
+    <div class="form-actions">
+        <div class="col-md-offset-5">
+            {{ form_widget(form.confirm) }}
+        </div>
     </div>
 </div>
 

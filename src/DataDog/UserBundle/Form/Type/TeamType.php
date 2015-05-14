@@ -29,21 +29,28 @@ class TeamType extends AbstractType
     {
         $builder->add('name', 'text', [
             'required' => false,
+            'label' => 'Name',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter team name'],
         ]);
         $builder->add('manager', 'entity', [
             'class' => 'UserBundle:User',
             'choices' => $this->fetchManagerChoices(),
             'empty_value' => 'Please Select',
+            'label' => 'Manager',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
         ]);
         $builder->add('users', 'entity', [
             'class' => 'UserBundle:User',
             'choices' => $this->fetchEmployeeChoices(),
-            'empty_value' => 'Please Select',
+            'label' => 'Users',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
             'multiple' => true,
         ]);
-        $builder->add('confirm', 'submit');
+        $builder->add('confirm', 'submit', [
+            'attr' => ['class' => 'btn btn-primary']
+        ]);
 
     }
     /**

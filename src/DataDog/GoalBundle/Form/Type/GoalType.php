@@ -28,16 +28,18 @@ class GoalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', 'textarea', [
+            'label' => 'Description',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter goal description for employees'],
             'required' => false,
-            'label' => 'Nyhow',
-            'label_attr' => ['class' => 'labelHi'],
-            'attr' => ['class' => 'form-control', 'placeholder' => 'sup son']
         ]);
         $builder->add('points_reward', 'text', [
+            'label' => 'Points',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter point reward for completing goal'],
             'required' => false,
         ]);
 
         $builder->add('is_active', 'checkbox', [
+            'label' => 'Is Active',
             'required' => false,
             'constraints' => [
                 new Assert\Type('boolean'),
@@ -45,7 +47,9 @@ class GoalType extends AbstractType
             ]
         ]);
 
-        $builder->add('confirm', 'submit');
+        $builder->add('confirm', 'submit', [
+            'attr' => ['class' => 'btn btn-primary']
+        ]);
 
     }
     /**

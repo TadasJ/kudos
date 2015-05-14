@@ -32,7 +32,8 @@ class AchievementType extends AbstractType
         $builder->add('goal', 'entity', [
             'class' => 'GoalBundle:Goal',
             'choices' => $this->fetchGoalChoices(),
-            'empty_value' => 'Please Select',
+            'label' => 'Goals',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
             'multiple' => true,
         ]);
@@ -40,11 +41,14 @@ class AchievementType extends AbstractType
         $builder->add('user', 'entity', [
             'class' => 'UserBundle:User',
             'choices' => $this->fetchEmployeeChoices(),
-            'empty_value' => 'Please Select',
+            'label' => 'Goals',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
             'multiple' => true,
         ]);
-        $builder->add('confirm', 'submit');
+        $builder->add('confirm', 'submit', [
+            'attr' => ['class' => 'btn btn-primary']
+        ]);
 
     }
     /**

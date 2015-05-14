@@ -29,42 +29,58 @@ class UserType extends AbstractType
     {
         $builder->add('username', 'text', [
             'required' => false,
+            'label' => 'Username',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter username'],
         ]);
         $builder->add('password', 'password', [
             'required' => false,
+            'label' => 'Password',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter password'],
         ]);
         $builder->add('role', 'entity', [
             'class' => 'UserBundle:UserRole',
             'choices' => $this->fetchRoleChoices(),
             'empty_value' => 'Please Select',
             'required' => false,
+            'label' => 'Role',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
         ]);
         $builder->add('first_name', 'text', [
             'required' => false,
+            'label' => 'Name',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter first name'],
         ]);
         $builder->add('last_name', 'text', [
             'required' => false,
+            'label' => 'Surname',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter last name'],
         ]);
         $builder->add('total_points', 'text', [
             'required' => false,
+            'label' => 'Points',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;', 'placeholder' => 'Enter current points'],
         ]);
         $builder->add('teams', 'entity', [
             'class' => 'UserBundle:Team',
             'choices' => $this->fetchTeamChoices(),
-            'empty_value' => 'Please Select',
+            'label' => 'Teams',
+            'attr' => ['class' => 'form-control', 'style' => 'width:100%;'],
             'required' => false,
             'multiple' => true,
         ]);
         //if ($options['update']) {
             $builder->add('is_active', 'checkbox', [
                 'required' => false,
+                'label' => 'Is Active',
                 'constraints' => [
                     new Assert\Type('boolean'),
                     new Assert\Choice([true, false])
                 ]
             ]);
         //
-        $builder->add('confirm', 'submit');
+        $builder->add('confirm', 'submit', [
+            'attr' => ['class' => 'btn btn-primary']
+        ]);
 
     }
     /**

@@ -40,3 +40,21 @@
     -moz-border-radius: 0 4px 4px 0;
     border-radius: 0 4px 4px 0;
 }
+
+.form-block {
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
+.form-block label{
+    vertical-align: middle;
+}
+
+.form-actions{
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
+.form-control{
+    width:100%;
+}
