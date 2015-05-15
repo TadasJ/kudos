@@ -491,9 +491,10 @@ class User implements UserInterface, \Serializable
         foreach($this->managedTeams as $team){
             $newUsers = $team->getUsers();
             if(count($newUsers) === 1){
-                $newUsers = [$newUsers];
+                $selection[] = $newUsers;
             }
-            $users = array_merge($users, $newUsers);
+            $selection = $newUsers;
+            $users = array_merge($users, $selection);
         }
         if(empty($users)){
             $users = null;
