@@ -493,7 +493,7 @@ class User implements UserInterface, \Serializable
             if(gettype($newUsers) === 'object'){
                 $newUsers = [$newUsers];
             }
-            $users = array_merge($users, $team->getUsers());
+            $users = array_merge($users, $newUsers);
         }
         if(empty($users)){
             $users = null;
