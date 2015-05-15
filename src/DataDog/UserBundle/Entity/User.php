@@ -489,7 +489,7 @@ class User implements UserInterface, \Serializable
         }
         $users = [];
         foreach($this->managedTeams as $team){
-            $users += $team->getUsers();
+            $users = array_merge($users, $team->getUsers());
         }
         if(empty($users)){
             $users = null;

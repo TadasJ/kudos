@@ -67,21 +67,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_list.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="_list.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="527">
-              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.19675925" vertical-offset="0" max-vertical-offset="864">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7986111" vertical-offset="7640" max-vertical-offset="8840">
-              <caret line="494" column="26" selection-start-line="494" selection-start-column="26" selection-end-line="494" selection-end-column="26" />
+            <state vertical-scroll-proportion="-25.23077" vertical-offset="7623" max-vertical-offset="8840">
+              <caret line="491" column="60" selection-start-line="491" selection-start-column="60" selection-end-line="491" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -173,12 +173,12 @@
         <option value="$PROJECT_DIR$/app/Resources/views/sidebar.html.twig" />
         <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/User/list.html.twig" />
         <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/table.html.twig" />
-        <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/_list.html.twig" />
         <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/User/view.html.twig" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Controller/TeamController.php" />
         <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/_list.html.twig" />
       </list>
     </option>
   </component>
@@ -1190,14 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/_list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="527">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/table.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="476">
@@ -1292,8 +1284,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7986111" vertical-offset="7640" max-vertical-offset="8840">
-          <caret line="494" column="26" selection-start-line="494" selection-start-column="26" selection-end-line="494" selection-end-column="26" />
+        <state vertical-scroll-proportion="-25.23077" vertical-offset="7623" max-vertical-offset="8840">
+          <caret line="491" column="60" selection-start-line="491" selection-start-column="60" selection-end-line="491" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Resources/views/Team/_list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19675925" vertical-offset="0" max-vertical-offset="864">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding />
         </state>
       </provider>
