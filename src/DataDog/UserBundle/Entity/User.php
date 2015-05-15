@@ -483,6 +483,20 @@ class User implements UserInterface, \Serializable
         $this->managedAchievements[] = $managedAchievement;
     }
 
+    public function getManagedUsers(){
+        if($this->getRole()->getRole() !== 'ROLE_MANAGER'){
+            return null;
+        }
+        $users = [];
+        foreach($this->managedTeams as $team){
+            $users += $team->getUsers();
+        }
+        if(empty($users)){
+            $users = null;
+        }
+        return $users;
+    }
+
 
 
     public function __toString(){
