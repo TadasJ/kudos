@@ -54,7 +54,13 @@ class UserController extends Controller
                 throw $this->createAccessDeniedException('You can only view users you manage.');
             }*/
             $goals = $em->getRepository('GoalBundle:Goal')->findAll();
-            $teams = $user->getManagedTeams();
+            if($user->getRole()->getRole() === 'ROLE_MANAGER') {
+                $teams = $user->getManagedTeams();
+            }else if($user->getRole()->getRole() === 'ROLE_EMPLOYEE'){
+                $teams = $user->getTeams();
+            }else{
+                $teams = null;
+            }
 
         }
 
