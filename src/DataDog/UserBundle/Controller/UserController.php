@@ -85,7 +85,8 @@ class UserController extends Controller
         if($user->getRole()->getRole() === 'ROLE_EMPLOYEE'){
             return $this->redirectToRoute('home');
         }else if($user->getRole()->getRole() === 'ROLE_MANAGER'){
-            $users = $user->getManagedUsers();
+            //$users = $user->getManagedUsers();
+            return $this->redirectToRoute('home');
         }else if($user->getRole()->getRole() === 'ROLE_ADMIN'){
             $em = $this->getDoctrine()->getManager();
             $users = $em->getRepository('UserBundle:User')->findAll();

@@ -12,7 +12,7 @@
                 <ul class="nav">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/goal">Goals</a></li>
-                    {% if is_granted('ROLE_MANAGER') %}
+                    {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="/user">Users</a></li>
                     {% endif %}
                     <li><a href="/team">Teams</a></li>
