@@ -490,7 +490,7 @@ class User implements UserInterface, \Serializable
         $users = [];
         foreach($this->managedTeams as $team){
             $newUsers = $team->getUsers();
-            if(gettype($newUsers) === 'object'){
+            if(count($newUsers) === 1){
                 $newUsers = [$newUsers];
             }
             $users = array_merge($users, $newUsers);
