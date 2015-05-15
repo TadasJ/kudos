@@ -217,6 +217,7 @@ class UserController extends Controller
                 $em->persist($user);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', 'User ' . $user->getUsername() . ' successfully updated.');
+                return $this->redirectToRoute('user_view', ['id' => $user->getId()]);
             }
         }
 
