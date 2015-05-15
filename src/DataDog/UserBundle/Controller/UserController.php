@@ -173,6 +173,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'User '.$user->getUsername().' successfully created.');
+            return $this->redirectToRoute('user_list');
         }
 
         return $this->render('UserBundle:User:create.html.twig', [
@@ -217,7 +218,7 @@ class UserController extends Controller
                 $em->persist($user);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', 'User ' . $user->getUsername() . ' successfully updated.');
-                return $this->redirectToRoute('user_view', ['id' => $user->getId()]);
+                return $this->redirectToRoute('user_list');
             }
         }
 

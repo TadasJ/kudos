@@ -99,6 +99,7 @@ class TeamController extends Controller
             $em->persist($team);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'Team '.$team->getName().' successfully created.');
+            return $this->redirectToRoute('team_index');
         }
 
         return $this->render('UserBundle:Team:create.html.twig', [
@@ -141,6 +142,7 @@ class TeamController extends Controller
                 $em->persist($team);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', 'Team ' . $team->getName() . ' successfully updated.');
+                return $this->redirectToRoute('team_index');
             }
         }
 
