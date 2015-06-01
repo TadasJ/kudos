@@ -126,6 +126,7 @@ class User implements UserInterface, \Serializable
      * @var \DataDog\GoalBundle\Entity\Achievement[] $achievements
      *
      * @ORM\OneToMany(targetEntity="\DataDog\GoalBundle\Entity\Achievement", mappedBy="user")
+     * @ORM\OrderBy({"create_at" = "DESC"})
      */
     private $achievements;
 

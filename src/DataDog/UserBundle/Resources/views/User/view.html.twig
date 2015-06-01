@@ -4,21 +4,39 @@
 
 {% block body %}
 
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading separator">
-                <div class="panel-title">{{ user.__toString }} achievements
+    {% if user.role.role == 'ROLE_EMPLOYEE' %}
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading separator">
+                    <div class="panel-title">{{ user.__toString }} progress
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="graph" style="min-width: 200px; height: 400px; margin: 0 auto">
+
+                    </div>
                 </div>
             </div>
-            <div class="panel-body">
-                {{ include('GoalBundle:Achievement:_list.html.twig', {'achievements' : user.achievements}) }}
-                <br>
-                {% if is_granted('ROLE_MANAGER') %}
-                    <a href="/achievement/create" class="btn btn-primary">Mark achievement</a>
-                {% endif %}
+        </div>
+    {% endif %}
+
+    {% if user.role.role == 'ROLE_EMPLOYEE' %}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading separator">
+                    <div class="panel-title">{{ user.__toString }} achievements
+                    </div>
+                </div>
+                <div class="panel-body">
+                    {{ include('GoalBundle:Achievement:_list.html.twig', {'achievements' : user.achievements}) }}
+                    <br>
+                    {% if is_granted('ROLE_MANAGER') %}
+                        <a href="/achievement/create" class="btn btn-primary">Mark achievement</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 
     <div class="col-md-10">
         <div class="panel panel-default">
@@ -53,3 +71,52 @@
     </div>
 
 {% endblock %}
+
+{% if user.role.role == 'ROLE_EMPLOYEE' %}
+    {% block javascripts %}
+        <script type="text/javascript">
+            $(function () {
+                $('#graph').highcharts({
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: 'Kudos gained'
+                    },
+                    subtitle: {
+                        text: 'Over the last 14 days'
+                    },
+                    xAxis: {
+                        categories: {{ graphX | json_encode() | raw }}
+                    },
+                    yAxis: {
+                        //min: -20,
+                        title: {
+                            text: 'Kudos'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} kudos</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: '{{ user.__toString }}',
+                        data: {{ graphY | json_encode() | raw }}
+
+                    },
+                    ]
+                });
+            });
+        </script>
+    {% endblock %}
+{% endif %}

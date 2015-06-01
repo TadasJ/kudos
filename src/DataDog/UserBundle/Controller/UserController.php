@@ -74,11 +74,43 @@ class UserController extends Controller
             $teams = $em->getRepository('UserBundle:Team')->findAll();
         }
 
+        $graphX = $this->temporaryGetLastDays(14);
+        $graphY = $this->temporaryGetKudos($graphX, $user);
+
         return $this->render('UserBundle:User:view.html.twig', [
             'user' => $user,
             'teams' => $teams,
-            'goals' => $goals
+            'goals' => $goals,
+            'graphX' => $graphX,
+            'graphY' => $graphY,
         ]);
+    }
+
+    private function temporaryGetLastDays($count){
+        $days = [];
+        $currentDay = strtotime('-'.$count.' day', strtotime('tomorrow'));
+        $days[] = date('M-d' ,$currentDay);
+        while(count($days) < $count){
+            $currentDay = strtotime('+1 day', $currentDay);
+            $days[] = date('M-d' ,$currentDay);
+        }
+        return $days;
+    }
+
+    private function temporaryGetKudos($days, $user){
+        $kudos = [];
+        $em = $this->getDoctrine()->getManager();
+        $achievements = $em->getRepository('GoalBundle:Achievement')->findByUser($user);
+        foreach($days as $day){
+            $sum = 0;
+            foreach($achievements as $achievement){
+                if(date('M-d', strtotime($achievement->getCreateAt()->getTimestamp())) === $day) {
+                    $sum += $achievement->getPoints();
+                }
+            }
+            $kudos[] = $sum;
+        }
+        return $kudos;
     }
 
     /**
