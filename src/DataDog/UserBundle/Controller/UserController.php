@@ -292,21 +292,23 @@ class UserController extends Controller
         foreach($employeeRole->getUsers() as $user){
             $achievementCount = rand(2,5);
             for($achievementCount; $achievementCount > 0; $achievementCount--){
-                $goal = $em->getRepository('GoalBundle:Goal')->findById(rand(1,6));
+                $goal = $em->getRepository('GoalBundle:Goal')->find(rand(1,2));
+                $manager = $em->getRepository('UserBundle:User')->find(1);
 
                 if(!empty($goal)) {
                     $achievement = new Achievement();
                     $achievement->setGoal($goal);
                     $achievement->setGoalId($goal->getId());
                     $achievement->setTitle($goal->getTitle());
-                    $achievement->setPoints($goal->getPoints());
-                    $achievement->setManagerId(1);
-                    $achievement->setUserId($user->getId());
+                    $achievement->setPoints($goal->getPointsReward());
+                    $achievement->setManager($manager);
                     $achievement->setUser($user);
                     //$achievement->setCreateAt(rand(time()-1123200, time()));
                     $em->persist($achievement);
                     $em->flush();
-                    $achievement->setCreateAt(rand(time() - 1123200, time()));
+                    $date = new DateTime();
+                    $date->setTimestamp(rand(time() - 1123200, time()));
+                    $achievement->setCreateAt($date);
                     $em->flush();
                 }
             }
