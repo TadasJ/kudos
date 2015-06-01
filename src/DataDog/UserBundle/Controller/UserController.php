@@ -2,6 +2,7 @@
 
 namespace DataDog\UserBundle\Controller;
 
+use DataDog\GoalBundle\Entity\Achievement;
 use DataDog\UserBundle\Entity\User;
 use DataDog\UserBundle\Form\Model\LoginForm;
 use DataDog\UserBundle\Form\Type\LoginType;
@@ -285,6 +286,20 @@ class UserController extends Controller
             $adminUser->setIsActive(1);
             $em->persist($adminUser);
             $em->flush();
+        }
+
+        $employeeRole = $em->getRepository('UserBundle:UserRole')->findByValue(UserRoleRepository::ROLE_EMPLOYEE);
+        foreach($employeeRole->getUsers() as $user){
+            $achievementCount = rand(2,5);
+            for($achievementCount; $achievementCount > 0; $achievementCount--){
+                $achievement = new Achievement();
+                $achievement->setGoalId(rand(1, 6));
+                $achievement->setManagerId(1);
+                $achievement->setUser($user);
+                $achievement->setCreateAt(rand(time()-1123200, time()));
+                $em->persist($achievement);
+                $em->flush();
+            }
         }
 
         return $this->redirectToRoute('login');
