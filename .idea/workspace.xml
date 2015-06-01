@@ -31,8 +31,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45220193" vertical-offset="4034" max-vertical-offset="5010">
-              <caret line="297" column="35" selection-start-line="297" selection-start-column="35" selection-end-line="297" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.7905478" vertical-offset="944" max-vertical-offset="5010">
+              <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
               <folding>
                 <element signature="e#49#91#0#PHP" expanded="true" />
               </folding>
@@ -53,11 +53,12 @@
       <file leaf-file-name="AchievementRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataDog/GoalBundle/Repository/AchievementRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="300">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="405">
+              <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
               <folding>
-                <marker date="1433150720454" expanded="true" signature="344:400" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
-                <marker date="1433150720454" expanded="true" signature="344:382" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
+                <marker date="1433155285553" expanded="true" signature="344:400" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
+                <marker date="1433155285553" expanded="true" signature="344:382" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
+                <marker date="1433155285553" expanded="true" signature="544:607" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
               </folding>
             </state>
           </provider>
@@ -1018,6 +1019,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="833">
           <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,6 +1130,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.1548975" vertical-offset="680" max-vertical-offset="2023">
           <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="37" selection-end-column="111" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,6 +1138,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45899773" vertical-offset="4391" max-vertical-offset="5899">
           <caret line="303" column="20" selection-start-line="303" selection-start-column="20" selection-end-line="303" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1237,17 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataDog/GoalBundle/Repository/AchievementRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="300">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <marker date="1433150720454" expanded="true" signature="344:400" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
-            <marker date="1433150720454" expanded="true" signature="344:382" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataDog/GoalBundle/Entity/Achievement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.625" vertical-offset="135" max-vertical-offset="4080">
@@ -1280,6 +1273,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataDog/GoalBundle/Repository/AchievementRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="405">
+          <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
+          <folding>
+            <marker date="1433155285553" expanded="true" signature="344:400" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
+            <marker date="1433155285553" expanded="true" signature="344:382" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
+            <marker date="1433155285553" expanded="true" signature="544:607" placeholder="SELECT e FRO..self_ENTITY_NAME..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-25.375" vertical-offset="1251" max-vertical-offset="7890">
@@ -1290,8 +1295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataDog/UserBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45220193" vertical-offset="4034" max-vertical-offset="5010">
-          <caret line="297" column="35" selection-start-line="297" selection-start-column="35" selection-end-line="297" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.7905478" vertical-offset="944" max-vertical-offset="5010">
+          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
           <folding>
             <element signature="e#49#91#0#PHP" expanded="true" />
           </folding>

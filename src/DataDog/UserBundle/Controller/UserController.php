@@ -105,7 +105,7 @@ class UserController extends Controller
         foreach($days as $day){
             $sum = 0;
             foreach($achievements as $achievement){
-                if(date('M-d', strtotime($achievement->getCreateAt()->getTimestamp())) === $day) {
+                if(date('M-d', $achievement->getCreateAt()->getTimestamp()) == $day) {
                     $sum += $achievement->getPoints();
                 }
             }
@@ -288,11 +288,11 @@ class UserController extends Controller
             $em->flush();
         }
 
-        $employeeRole = $em->getRepository('UserBundle:UserRole')->findByValue(UserRoleRepository::ROLE_EMPLOYEE);
+        /*$employeeRole = $em->getRepository('UserBundle:UserRole')->findByValue(UserRoleRepository::ROLE_EMPLOYEE);
         foreach($employeeRole->getUsers() as $user){
             $achievementCount = rand(2,5);
             for($achievementCount; $achievementCount > 0; $achievementCount--){
-                $goal = $em->getRepository('GoalBundle:Goal')->find(rand(3,6));
+                $goal = $em->getRepository('GoalBundle:Goal')->find(rand(1,6));
                 $manager = $em->getRepository('UserBundle:User')->find(1);
 
                 if(!empty($goal)) {
@@ -312,7 +312,7 @@ class UserController extends Controller
                     $em->flush();
                 }
             }
-        }
+        }*/
 
         return $this->redirectToRoute('login');
     }

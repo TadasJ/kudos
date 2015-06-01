@@ -13,4 +13,11 @@ class AchievementRepository extends EntityRepository
             ->createQuery('SELECT e FROM '.self::ENTITY_NAME.' e ORDER BY e.id DESC')
             ->getResult();
     }
+
+    public function findByUser($user){
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM '.self::ENTITY_NAME.' e WHERE e.user_id = :userId')
+            ->setParameter('userId', $user->getId())
+            ->getResult();
+    }
 }
