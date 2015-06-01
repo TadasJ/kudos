@@ -292,7 +292,7 @@ class UserController extends Controller
         foreach($employeeRole->getUsers() as $user){
             $achievementCount = rand(2,5);
             for($achievementCount; $achievementCount > 0; $achievementCount--){
-                $goal = $em->getRepository('GoalBundle:Goal')->find(rand(1,2));
+                $goal = $em->getRepository('GoalBundle:Goal')->find(rand(3,6));
                 $manager = $em->getRepository('UserBundle:User')->find(1);
 
                 if(!empty($goal)) {
